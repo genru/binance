@@ -1,7 +1,5 @@
 import { parseRawWsMessage, WebsocketClient, isWsFormatted24hrTicker } from "../src";
 
-process.env.apiKey = '8QgakOUXJI5PNYAeCdxxTeBrHrbJJZOPezglCxLiFUfok4Bnp6pVTx1RKmGB1ltB';
-process.env.apiSecret = 'DifzWWa4JyJ6Q8AWF1AxQKXyIfq4Xj681hPW0dNVoDIQTcghxjv5UvAruQv4YuY9';
 describe.only('websocket-client', () => {
   describe('parseRawWsMessage()', () => {
     it('should parse & resolve an event with nested data', () => {

@@ -1,5 +1,5 @@
 {
-  "name": "binance",
+  "name": "@genru/binance",
   "version": "2.0.34",
   "description": "Node.js connector for Binance's REST APIs and WebSockets, with TypeScript & integration tests.",
   "main": "lib/index.js",
@@ -19,7 +19,7 @@
     "prepublishOnly": "npm run build:clean",
     "betapublish": "npm publish --tag beta"
   },
-  "author": "Tiago Siebler (https://github.com/tiagosiebler)",
+  "author": "genru (https://github.com/genru)",
   "contributors": [
     "Zoey Garvey",
     "Clifford Roche <clifford.roche@gmail.com> (http://www.cliffordroche.ca)",
@@ -79,10 +79,13 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/tiagosiebler/binance"
+    "url": "git://github.com/genru/binance.git"
   },
   "bugs": {
     "url": "https://github.com/tiagosiebler/binance/issues"
   },
-  "homepage": "https://github.com/tiagosiebler/binance#readme"
+  "homepage": "https://github.com/tiagosiebler/binance#readme",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  }
 }
