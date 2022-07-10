@@ -1,6 +1,7 @@
 import { AxiosRequestConfig } from 'axios';
 import { EventEmitter } from 'events';
 import WebSocket from 'isomorphic-ws';
+import {HttpsProxyAgent, HttpsProxyAgentOptions} from 'https-proxy-agent';
 
 import { DefaultLogger } from './logger';
 import { MainClient } from './main-client';
@@ -190,7 +191,17 @@ export class WebsocketClient extends EventEmitter {
 
     this.logger.silly(`connectToWsUrl(): Opening WS connection to URL: ${url}`, { ...loggerCategory, wsRefKey })
 
-    const ws = new WebSocket(url);
+    const proxy = this.options.requestOptions?.proxy
+    let agent
+    if(proxy) {
+      agent = new HttpsProxyAgent( proxy as HttpsProxyAgentOptions);
+    }
+    let ws;
+    if(agent) {
+      ws = new WebSocket(url, {agent});
+    } else {
+      ws = new WebSocket(url);
+    }
     this.wsUrlKeyMap[url] = wsRefKey;
 
     if (typeof ws.on === 'function') {
